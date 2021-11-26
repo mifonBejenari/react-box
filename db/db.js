@@ -1,7 +1,8 @@
-var tasks = require('./tasks.json');
+const
+  notes = require('./notes.json');
 
 module.exports = function() {
   return {
-    tasks: tasks,
+    notes: notes,
   }
 }
