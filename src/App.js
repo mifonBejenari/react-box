@@ -1,10 +1,12 @@
-import NoteList from './components/Notes/NoteList';
+// import NoteList from './components/Notes/NoteList';
+import Wallet from './components/Wallet/Wallet';
 
 function App() {
   return (
-    <div className="App">
-      <NoteList />
-    </div>
+    <>
+      {/*<NoteList />*/}
+      <Wallet />
+    </>
   );
 }
 

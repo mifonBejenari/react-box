@@ -1,0 +1,16 @@
+{
+  "expenses": [
+    {
+      "id": 1,
+      "spent": 4,
+      "description": "spent Description",
+      "category": "category_1",
+      "timeStamp": 1638284273
+    },
+    {
+      "id": 3,
+      "description": "React POST Request Example",
+      "spent": 5
+    }
+  ]
+}
