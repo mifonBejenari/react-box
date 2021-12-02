@@ -1,19 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import './wallet.scss';
 import Expenses from './Expenses/Expenses';
 import Form from './Form/Form';
+import AppContext from '../../utils/Context';
 
 const Wallet = () => {
-  const [expenses, setExpenses] = useState([]);
+  const context = useContext(AppContext);
 
   useEffect (() => {
-    fetch('http://localhost:3001/expenses')
+    fetch('http://localhost:3001/expenses?_sort=timeStamp&_order=desc')
       .then(resp => {
         return resp.json();
       })
       .then(data => {
-        setExpenses(data);
-        console.log(data)
+        context.setExpenses(data);
+      })
+  }, [context.update])
+
+  useEffect (() => {
+    fetch('http://localhost:3001/categories')
+      .then(resp => {
+        return resp.json();
+      })
+      .then(data => {
+        context.setCategories(data);
+        context.categories = data;
       })
   }, [])
 
@@ -23,7 +34,7 @@ const Wallet = () => {
         <h3>Wallet</h3>
         <Form />
 
-        <Expenses expenses={expenses}/>
+        <Expenses expenses={context.expenses} />
       </div>
     </>
   )

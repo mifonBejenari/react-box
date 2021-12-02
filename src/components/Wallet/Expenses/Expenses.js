@@ -1,4 +1,5 @@
 import Expense from './Expense/Expense';
+import './expenses.scss';
 
 const Expenses = (props) => {
   const { expenses } = props;
@@ -7,10 +8,10 @@ const Expenses = (props) => {
     <>
       <h3>Expenses</h3>
 
-      <ul>
+      <ul className={'expense-list'}>
         {expenses.map(item => (
           <li key={item.id}>
-            <Expense expense={item}/>
+            <Expense expense={item} />
           </li>
         ))}
       </ul>

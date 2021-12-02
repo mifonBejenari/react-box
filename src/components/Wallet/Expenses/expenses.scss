@@ -1,0 +1,14 @@
+@import '../../../styles/scss/base/base';
+
+.expense-list {
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin-bottom: 15px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
