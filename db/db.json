@@ -1,16 +1,72 @@
 {
-  "expenses": [
+  "settings": [
     {
       "id": 1,
-      "spent": 4,
-      "description": "spent Description",
-      "category": "category_1",
-      "timeStamp": 1638284273
+      "dateFormat": "dd/mm/yyyy, hh:mm"
+    }
+  ],
+  "expenses": [
+    {
+      "amount": "1",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441005117,
+      "id": 1
     },
     {
-      "id": 3,
-      "description": "React POST Request Example",
-      "spent": 5
+      "amount": "2",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441006905,
+      "id": 2
+    },
+    {
+      "amount": "3",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441008312,
+      "id": 3
+    },
+    {
+      "amount": "121223",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638450369388,
+      "id": 4
+    },
+    {
+      "amount": "012",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638450946127,
+      "id": 5
+    },
+    {
+      "amount": "01334",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638451213765,
+      "id": 6
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "icon": "/path",
+      "machineName": "category_1",
+      "title": "Category 1",
+      "expenses": [
+        1
+      ]
+    },
+    {
+      "id": "2",
+      "icon": "/path",
+      "machineName": "category_2",
+      "title": "Category 2",
+      "expenses": [
+        1
+      ]
     }
   ]
 }

@@ -1,0 +1,22 @@
+@import "../../../../styles/scss/base/base";
+
+.expense {
+  background-color: gray;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.expense__details {
+  position: relative;
+}
+
+.expense__date {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  font-size: 12px;
+}
+
+.expense__actions {
+  margin-top: 15px;
+}
