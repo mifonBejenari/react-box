@@ -7,6 +7,7 @@ const Form = (props) => {
     id,
     amount,
     category,
+    timeStamp,
     description
   } = props;
 
@@ -16,14 +17,15 @@ const Form = (props) => {
   const [formStateOpen, setFormState] = useState(!!id);
   const [amountState, setAmountState] = useState(amount || 0);
   const [descriptionState, setDescriptionState] = useState(description || '');
-  const [categoryState, setCategoryState] = useState(category || '');
+  const [categoryState, setCategoryState] = useState(category || 'empty');
+  const [timeStampState, setTimeStampState] = useState(timeStamp || 0);
 
   const openForm = () => {
     setFormState(!formStateOpen);
   }
 
   const resetForm = () => {
-    if (id && id.length > 0) {
+    if (id) {
       setAmountState(amount);
       setDescriptionState(description);
       setCategoryState(category);
@@ -63,18 +65,44 @@ const Form = (props) => {
       body: JSON.stringify({
         amount: amountState,
         description: descriptionState,
-        category: categoryState,
-        timeStamp: Date.now()
+        category_id: categoryState,
+        timeStamp: timeStampState
       })
     })
+      .then(() => {
+        const expense = {
+          amount: amountState,
+          description: descriptionState,
+          category_id: categoryState,
+          timeStamp: timeStampState
+        }
+
+        let newExpenses = context.expenses;
+
+        if (id) {
+          expense.id = id;
+          newExpenses = context.expenses.filter(item => item.id !== id)
+        }
+        else {
+          expense.id = Math.max(...context.expenses.map(obj => obj.id), 0) + 1;
+          expense.timeStamp = Date.now();
+        }
+        const objArr = [expense];
+
+
+        const newArr = objArr.concat(newExpenses)
+
+        context.setExpenses(newArr)
+
+      })
   }
 
   const submitExpense = (e) => {
     e.preventDefault();
     if (validateForm() === true) {
       postExpense();
-      context.updateDB();
       resetForm();
+      setTimeStampState(Date.now());
     }
   }
 
@@ -82,7 +110,6 @@ const Form = (props) => {
     e.preventDefault();
     if (validateForm() === true) {
       postExpense();
-      context.updateDB();
       props.editExpense(false)
     }
   }
@@ -92,17 +119,18 @@ const Form = (props) => {
     fetch('http://localhost:3001/expenses/' + id, {
       method: "DELETE",
     })
-      .then(res => console.log(res))
-      .then(context.updateDB)
+      .then(
+        context.setExpenses(context.expenses.filter(item => item.id !== id))
+      )
   }
 
   const cancelForm = (e) => {
     e.preventDefault();
-    resetForm();
-    setFormState(false);
     if (id) {
       props.editExpense(false);
     }
+    setFormState(false);
+    resetForm();
   }
 
   return (
@@ -121,28 +149,31 @@ const Form = (props) => {
           />
         </div>
 
+        <div className={''}>
+          <select
+            name="Category"
+            value={categoryState}
+            onChange={updateValue}
+          >
+            <option value={'empty'} defaultValue> -- Select an option -- </option>
+
+            {categories.map(item => (
+              <option value={item.machineName} key={item.id}>{item.title}</option>
+            ))}
+
+          </select>
+        </div>
+
         <div>
           <textarea
             name="Description"
             id=""
             cols="30"
             rows="2"
-            placeholder={"Description"}
+            placeholder={'Description'}
             value={descriptionState}
             onChange={updateValue}
           />
-        </div>
-
-        <div>
-          <select
-            name="Category"
-            value={categoryState}
-            onChange={updateValue}
-          >
-            {categories.map(item => (
-              <option value={item.machineName} key={item.id}>{item.title}</option>
-            ))}
-          </select>
         </div>
 
         <div className={'form__actions'}>

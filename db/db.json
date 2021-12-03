@@ -7,32 +7,46 @@
   ],
   "expenses": [
     {
-      "amount": "0123",
-      "description": "123",
-      "category": "",
-      "timeStamp": 1638427319458,
+      "amount": "1",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441005117,
       "id": 1
     },
     {
-      "amount": "123",
-      "description": "asdF",
-      "category": "",
-      "timeStamp": 1638428897559,
+      "amount": "2",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441006905,
       "id": 2
     },
     {
-      "amount": "123",
-      "description": "asdav",
-      "category": "category_2",
-      "timeStamp": 1638428903403,
+      "amount": "3",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638441008312,
       "id": 3
     },
     {
-      "amount": "1214",
-      "description": "adfs s",
-      "category": "category_1",
-      "timeStamp": 1638428917363,
+      "amount": "121223",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638450369388,
       "id": 4
+    },
+    {
+      "amount": "012",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638450946127,
+      "id": 5
+    },
+    {
+      "amount": "01334",
+      "description": "",
+      "category_id": "empty",
+      "timeStamp": 1638451213765,
+      "id": 6
     }
   ],
   "categories": [

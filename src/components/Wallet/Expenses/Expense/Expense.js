@@ -7,6 +7,7 @@ const Expense = (props) => {
   const {
     id,
     amount,
+    category_id,
     category,
     timeStamp,
     description
@@ -27,7 +28,7 @@ const Expense = (props) => {
           </div>
           <div>
             <div className={'expense__amount'}>{amount}</div>
-            <div className={'expense__category'}>{category}</div>
+            {category && <div className={'expense__category'}>{category.title}</div> }
           </div>
           <div className={'expense__description'}>{description}</div>
         </div>
@@ -36,7 +37,7 @@ const Expense = (props) => {
       {editing && <Form
         id={id}
         amount={amount}
-        category={category}
+        category={category_id}
         timeStamp={timeStamp}
         description={description}
         editExpense={editExpense}
